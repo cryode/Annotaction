@@ -1,0 +1,43 @@
+{
+  "name": "cryode/annotaction",
+  "description": "A Laravel package for annotation-powered actions.",
+  "type": "library",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Aken Roberts",
+      "email": "aken@cryode.com"
+    }
+  ],
+  "require": {
+    "php": ">=7.1",
+    "doctrine/annotations": "^1.6"
+  },
+  "require-dev": {
+    "friendsofphp/php-cs-fixer": "^2.12",
+    "phpunit/phpunit": "^7.2",
+    "orchestra/testbench": "^3.6"
+  },
+  "autoload": {
+    "psr-4": {
+      "Cryode\\Annotaction\\": "src/",
+      "Cryode\\Annotaction\\Tests\\": "tests/"
+    },
+    "files": [
+      "src/Util/helpers.php"
+    ]
+  },
+  "scripts": {
+    "test": [
+      "./vendor/bin/phpunit --bootstrap vendor/autoload.php tests"
+    ],
+    "fix-cs": [
+      "./vendor/bin/php-cs-fixer fix --config=.php_cs.dist"
+    ]
+  },
+  "extra": {
+    "laravel": {
+      "providers": ["Cryode\\Annotaction\\AnnotactionServiceProvider"]
+    }
+  }
+}

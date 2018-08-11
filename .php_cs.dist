@@ -1,0 +1,16 @@
+<?php
+
+$finder = PhpCsFixer\Finder::create()
+    ->in(__DIR__.'/config')
+    ->in(__DIR__.'/src');
+
+return PhpCsFixer\Config::create()
+    ->setRules([
+        '@Symfony' => true,
+        'native_function_invocation' => true,
+        'strict_param' => true,
+        'array_syntax' => ['syntax' => 'short'],
+        'not_operator_with_space' => true,
+    ])
+    ->setRiskyAllowed(true)
+    ->setFinder($finder);

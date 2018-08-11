@@ -1,0 +1,18 @@
+<?php
+declare();
+
+namespace DummyNamespace;
+
+use Cryode\Annotaction\Annotation\Route;
+use Illuminate\Http\Request;
+
+/**
+ * @Route(DummyRoute)
+ */
+final class DummyClass
+{
+    public function __invoke(Request $request)
+    {
+        //
+    }
+}
