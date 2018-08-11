@@ -33,6 +33,10 @@ class LoadActionRoutes
 
     public function __invoke()
     {
+        if ( ! $this->filesystem->isDirectory($this->actionDir)) {
+            $this->filesystem->makeDirectory($this->actionDir);
+        }
+
         // Can be removed when upgrading to doctrine/annotations 2.0
         AnnotationRegistry::registerLoader('class_exists');
 
