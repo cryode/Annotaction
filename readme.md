@@ -4,20 +4,22 @@
 Annotaction enables you to create and use single-action controllers (Actions)
 that utilize Annotations to define their corresponding Route.
 
-    <?php
-    
-    use Cryode\Annotaction\Annotation\Route;
+```php
+<?php
 
-    /**
-     * @Route("/blog/post/{postId}", middleware="web", name="blog.post.view")
-     */
-    final class ViewBlogPost
+use Cryode\Annotaction\Annotation\Route;
+
+/**
+ * @Route("/blog/post/{postId}", middleware="web", name="blog.post.view")
+ */
+final class ViewBlogPost
+{
+    public function __invoke($postId)
     {
-        public function __invoke($postId)
-        {
-            // ...
-        }
+        // ...
     }
+}
+```
 
 ## Benefits
 
