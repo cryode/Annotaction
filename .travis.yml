@@ -1,4 +1,5 @@
 language: php
 
-script:
-  - composer test
+install: composer install
+
+script: composer test
