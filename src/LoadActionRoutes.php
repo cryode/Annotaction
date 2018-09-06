@@ -55,18 +55,23 @@ class LoadActionRoutes
             $actionFqcn = FqcnFinder::findClass($file->getPathname());
             $reflectionClass = new \ReflectionClass($actionFqcn);
 
-            if ( ! $reflectionClass->hasMethod('__invoke')) {
-                throw new \RuntimeException('Action class '.$actionFqcn.' does not have the __invoke() method');
-            }
-
             try {
                 /** @var Route $annotation */
                 $annotation = $reader->getClassAnnotation($reflectionClass, Route::class);
+
+                if (null === $annotation) {
+                    // The Route annotation is not on the class.
+                    continue;
+                }
+
+                if ( ! $reflectionClass->hasMethod('__invoke')) {
+                    throw new \RuntimeException('Action class '.$actionFqcn.' does not have the __invoke() method');
+                }
+
+                $this->router->addFromAnnotation($actionFqcn, $annotation);
             } catch (InvalidValueException $e) {
                 throw InvalidActionAnnotationException::make($actionFqcn, $e);
             }
-
-            $this->router->addFromAnnotation($actionFqcn, $annotation);
         }
     }
 }
