@@ -20,7 +20,7 @@ final class Route
     /**
      * @var array
      */
-    private $httpMethods = ['GET', 'HEAD'];
+    private $method = ['GET', 'HEAD'];
 
     /**
      * @var array
@@ -74,7 +74,7 @@ final class Route
 
     public function getHttpMethods(): array
     {
-        return $this->httpMethods;
+        return $this->method;
     }
 
     /**
@@ -92,7 +92,7 @@ final class Route
             $httpMethods[] = 'HEAD';
         }
 
-        $this->httpMethods = $httpMethods;
+        $this->method = $httpMethods;
 
         return $this;
     }
